@@ -1,0 +1,1 @@
+.header{display:flex;justify-content:space-between}.header .title{text-transform:uppercase}.main-left{display:flex;flex-direction:column;gap:2em;padding:1em}.main-right{display:flex;flex-direction:column;gap:2em;padding:1em}.summary{display:flex;justify-content:space-between}.info-card{display:flex;flex-direction:column}
