@@ -7,7 +7,7 @@ box::use(
 
 ui  <- function(id) {
     ns  <- NS(id)
-    echarts4rOutput(ns("map"))
+    echarts4rOutput(ns("map"), height = "100%")
 }
 
 server  <- function(id, data) {
