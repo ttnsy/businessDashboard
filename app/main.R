@@ -30,6 +30,8 @@ ui <- function(id) {
       airDatepickerInput(
         "daterange",
         range = TRUE,
+        dateFormat = "MMM d, yyyy",
+        value = c(ymd("2019-08-01"), ymd("2020-06-01")),
         minDate = ymd("2019-01-01"),
         maxDate = ymd("2020-12-31")
       )
