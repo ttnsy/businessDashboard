@@ -5,6 +5,7 @@ box::use(
         element_blank,
         ggplot,
         geom_col,
+        geom_text,
         annotate,
         margin,
         scale_x_reverse,
@@ -13,9 +14,14 @@ box::use(
     ],
     dplyr[`%>%`, mutate, summarise, filter, group_by, ungroup, between, n],
     scales[label_number_si, comma],
+    stringr[str_to_title],
     glue[glue],
     lubridate[ymd],
     shiny[NS, moduleServer, reactive, plotOutput, renderPlot]
+)
+
+box::use(
+  app/logic/plot_theme[theme_def]
 )
 
 ui  <- function(id) {
@@ -23,16 +29,20 @@ ui  <- function(id) {
     plotOutput(ns("stacked_bar"))
 }
 
-server  <- function (id, data) {
+server  <- function(id, data) {
     moduleServer(id, function(input, output, session) {
         data_pay <- reactive({
             data %>%
-                filter(between(date, ymd("2019-08-01"), ymd("2020-12-31"))) %>%
                 group_by(payment)  %>%
                 summarise(
-                     n = n()
+                     n = n(),
                 ) %>%
                 ungroup() %>%
+                mutate(
+                    payment = str_to_title(payment),
+                    perc = n / sum(n),
+                    coord_text = c(0.725, 0.28, 0.065)
+                ) %>%
                 mutate(cat = "payment")
         })
 
@@ -43,18 +53,12 @@ server  <- function (id, data) {
             lightestblue <- "#97c5fa"
             blue  <- "#0971ef"
 
-            ggplot(dat, aes(x = n, y = cat, fill = payment)) + 
-                geom_col(color = "white") + 
+            ggplot(dat, aes(y = cat, x = perc, fill = payment)) +
+                geom_col(color = "white") +
                 scale_fill_manual(values = c(blue, lightblue, lightestblue)) +
                 scale_x_reverse() +
-                annotate("text", label = "Cash", x = 400, y = 1) +
-                annotate("text", label = "Fiverr", x = 200, y = 1) +
-                annotate("text", label = "PayPal", x = 55, y = 1) +
-                theme(
-                    axis.title = element_blank(),
-                    axis.text = element_blank(),
-                    legend.position = "none"
-                )
+                geom_text(aes(x = coord_text, label = payment), size = 12) +
+                theme_def(axis = FALSE, panel = FALSE, legend = FALSE)
         })
     })
 }
