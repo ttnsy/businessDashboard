@@ -1,6 +1,6 @@
 box::use(
   dplyr[`%>%`, between, filter, mutate],
-  shiny[div, moduleServer, NS, h1, dateRangeInput, fluidPage, icon],
+  shiny[div, tags, moduleServer, NS, h1, dateRangeInput, fluidPage, icon],
   shinyWidgets[airDatepickerInput],
   lubridate[ymd],
   bslib[bs_theme, font_google],
