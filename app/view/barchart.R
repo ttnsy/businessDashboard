@@ -34,15 +34,19 @@ ui  <- function(id) {
 server  <- function(id, data) {
   moduleServer(id, function(input, output, session) {
     data_rev <- reactive({
-        data %>%
+        dat  <- data %>%
             group_by(date)  %>%
             summarise(
                     revenue = sum(revenue)
             ) %>%
-            ungroup() %>%
-            mutate(
-                ymax = revenue + 15000,
-            )
+            ungroup()
+
+        line_height  <- mean(dat$revenue) * 0.06
+
+        dat %>%
+          mutate(
+            ymax = revenue + line_height,
+          )
     })
 
     output$barchart <- renderPlot({
@@ -52,8 +56,8 @@ server  <- function(id, data) {
         `Monthly Goal` <- "#ff7345" # nolint: object_name_linter.
         `Final Revenue` <- "#63b5f6" # nolint: object_name_linter.
 
-        break_y  <- 52000
-        max_y  <- max(dat$revenue) + break_y
+        y_break  <- 52000
+        y_max  <- max(dat$revenue) + y_break
 
         ggplot(dat, aes(x = date, y = revenue, fill = `Final Revenue`)) +
           geom_col(width = 20) +
@@ -80,8 +84,8 @@ server  <- function(id, data) {
           scale_y_continuous(
             labels = label_number_si(),
             expand = c(0, 10),
-            breaks = seq(0, max_y, 52000),
-            limits = c(0, max_y)
+            breaks = seq(0, y_max, y_break),
+            limits = c(0, y_max)
           ) +
           theme_def()
     })
