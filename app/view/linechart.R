@@ -82,7 +82,8 @@ server  <- function(id, data) {
         geom_point(aes(color = `USD per Hour`), size = 2.2) +
         geom_text(
             aes(y = coor_label, label = comma(salary_avg, prefix = "$")),
-            color = "red"
+            color = "red",
+            size = 5,
         ) +
         guides(
             color = guide_legend_def()

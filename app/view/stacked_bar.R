@@ -57,7 +57,7 @@ server  <- function(id, data) {
                 geom_col(color = "white") +
                 scale_fill_manual(values = c(blue, lightblue, lightestblue)) +
                 scale_x_reverse() +
-                geom_text(aes(x = coord_text, label = payment), size = 12) +
+                geom_text(aes(x = coord_text, label = payment), size = 8) +
                 theme_def(axis = FALSE, panel = FALSE, legend = FALSE)
         })
     })

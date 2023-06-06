@@ -66,7 +66,7 @@ server  <- function(id, data) {
           geom_text(
             aes(label = comma(revenue, prefix = "$")),
             vjust = -2,
-            size = 4,
+            size = 5,
             color = blue
           ) +
           guides(

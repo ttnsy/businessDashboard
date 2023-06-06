@@ -11,7 +11,6 @@ box::use(
     theme,
     unit
   ],
-  elementalist[element_rect_round],
   grDevices[rgb]
 )
 
@@ -54,9 +53,9 @@ theme_def  <- function(
     panel.grid.major.y = if(!panel_grid_y) element_blank() else element_line(color = col_grid),
     panel.grid.minor.y = if(!panel_grid_y) element_blank() else element_line(color = col_grid),
     panel.background = if (!panel) element_blank() else element_rect(fill = "#3c4042"),
-    plot.background = element_rect_round(
+    plot.background = element_rect(
         fill = "#2c2e38",
-        radius = unit(0.8, "lines")
+        color = NA,
     ),
     plot.margin = unit(c(1, 2, 2, 1), "lines")
   )
