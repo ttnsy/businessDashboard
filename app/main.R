@@ -54,7 +54,7 @@ server <- function(id) {
   moduleServer(id, function(input, output, session) {
     options(scipen = 99)
 
-    data  <- utils::read.csv("app/data/mock_data.csv") 
+    data  <- utils::read.csv("app/data/mock_data.csv")
     data  <- data %>%
       mutate(date = ymd(ymd(data$date)))  %>%
       filter(between(date, ymd("2019-08-01"), ymd("2020-06-01")))
