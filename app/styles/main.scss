@@ -1,7 +1,7 @@
 .header {
     display: flex;
     justify-content: space-between;
-
+    padding: 1em;
     .title {
         text-transform: uppercase;
     }
@@ -28,5 +28,29 @@
 
 .info-card {
     display: flex;
+    width: 20em;
     flex-direction: column;
+    border: 1px solid black;
+    border-radius: 8px;
+    padding: 0.5em 1em;
+
+    h5 {
+        font-size: 2rem;
+    }
+
+    .number {
+        font-size: 2rem;
+    }
+
+    .text {
+        font-size: 3rem;
+    }
+}
+
+.fa-arrow-up {
+    color: green;
+}
+
+.fa-arrow-down {
+    color: red;
 }

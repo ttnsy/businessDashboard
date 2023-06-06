@@ -3,7 +3,7 @@ box::use(
   shinyWidgets[airDatepickerInput],
   lubridate[ymd],
   bslib[bs_theme, font_google],
-  imola[flexPanel]
+  imola[flexPage]
 )
 
 box::use(
@@ -18,39 +18,32 @@ box::use(
 #' @export
 ui <- function(id) {
   ns <- NS(id)
-  fluidPage(
-    theme = bs_theme(
-      bg = "#202125",
-      fg = "#fcfdfd",
-      base_font = font_google("Roboto")
-    ),
-    flexPanel(
-      template = "one-three-alternate",
-      div(
-        class = "header",
-        h1(
-          class = "title",
-          "Business Summary"
-        ),
-        airDatepickerInput(
-          "daterange",
-          range = TRUE,
-          minDate = ymd("2019-01-01"),
-          maxDate = ymd("2020-12-31")
-        )
+  flexPage(
+    template = "one-three-alternate",
+    div(
+      class = "header",
+      h1(
+        class = "title",
+        "Business Summary"
       ),
-      div(
-        class = "main-left",
-        summary$ui(ns("info_card")),
-        barchart$ui(ns("barchart")),
-        linechart$ui(ns("linechart")),
-        stacked_bar$ui(ns("stacked_bar"))
-      ),
-      div(
-        class = "main-right",
-        map$ui(ns("map")),
-        table$ui(ns("table"))
+      airDatepickerInput(
+        "daterange",
+        range = TRUE,
+        minDate = ymd("2019-01-01"),
+        maxDate = ymd("2020-12-31")
       )
+    ),
+    div(
+      class = "main-left",
+      summary$ui(ns("info_card")),
+      barchart$ui(ns("barchart")),
+      linechart$ui(ns("linechart")),
+      stacked_bar$ui(ns("stacked_bar"))
+    ),
+    div(
+      class = "main-right",
+      map$ui(ns("map")),
+      table$ui(ns("table"))
     )
   )
 }

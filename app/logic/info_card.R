@@ -5,16 +5,13 @@ box::use(
 infoCard <- function(header = NULL, text = NULL, numberIcon = NULL, number = NULL) {
   div(
     class = "info-card",
-    h5(
-      class = "card-header",
-      header
-    ),
+    h5(header),
     span(
-      class = "card-text",
+      class = "text",
       text
     ),
     span(
-      class = "card-number", 
+      class = "number", 
       numberIcon,
       number
     )
