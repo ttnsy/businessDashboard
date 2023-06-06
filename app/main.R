@@ -1,4 +1,5 @@
 box::use(
+  dplyr[`%>%`, between, filter, mutate],
   shiny[div, moduleServer, NS, h1, dateRangeInput, fluidPage, icon],
   shinyWidgets[airDatepickerInput],
   lubridate[ymd],
@@ -54,7 +55,9 @@ server <- function(id) {
     options(scipen = 99)
 
     data  <- utils::read.csv("app/data/mock_data.csv") 
-    data$date <-  ymd(data$date) 
+    data  <- data %>%
+      mutate(date = ymd(ymd(data$date)))  %>%
+      filter(between(date, ymd("2019-08-01"), ymd("2020-06-01")))
 
     barchart$server("barchart", data)
     linechart$server("linechart", data)
