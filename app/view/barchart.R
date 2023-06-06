@@ -10,6 +10,7 @@ box::use(
     guide_legend,
     margin,
     scale_fill_manual,
+    scale_x_date,
     scale_y_continuous,
     unit
   ],
@@ -22,7 +23,7 @@ box::use(
 )
 
 box::use(
-  app/logic/plot_theme[guide_legend_def, scale_x_date_def, theme_def]
+  app/logic/plot_theme[guide_legend_def, theme_def]
 )
 
 ui  <- function(id) {
@@ -71,7 +72,11 @@ server  <- function(id, data) {
           scale_fill_manual(
             values = `Final Revenue`
           ) +
-          scale_x_date_def() +
+          scale_x_date(
+            date_labels = "%Y-%m",
+            date_breaks = "2 month",
+            expand = c(0, 10)
+          ) +
           scale_y_continuous(
             labels = label_number_si(),
             expand = c(0, 10),

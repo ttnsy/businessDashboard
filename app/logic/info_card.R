@@ -11,7 +11,7 @@ infoCard <- function(header = NULL, text = NULL, numberIcon = NULL, number = NUL
       text
     ),
     span(
-      class = "number", 
+      class = "number",
       numberIcon,
       number
     )
