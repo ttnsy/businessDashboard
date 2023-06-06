@@ -2,7 +2,7 @@ box::use(
     shiny[div, moduleServer, NS, reactive],
     dplyr[`%>%`, arrange, between, desc, filter, group_by, summarise, ungroup],
     lubridate[ymd],
-    reactable[colDef, reactable, reactableOutput, renderReactable],
+    reactable[colDef, reactable, reactableOutput, renderReactable, reactableTheme],
     htmltools[div],
 )
 
@@ -86,10 +86,7 @@ server <- function(id, data) {
           ),
           theme = reactableTheme(
             color = "white",
-            backgroundColor = "#2c2e38",
-            headerStyle = list(
-              "th" = list(background = "red")
-            )
+            backgroundColor = "#2c2e38"
           )
         )
     })

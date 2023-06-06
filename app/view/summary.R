@@ -9,7 +9,7 @@ box::use(
 ui  <- function(id) {
     ns  <- NS(id)
     div(
-        class = "summary",
+        class = "info-card-container",
         infoCard(
             "Revenue",
             "$2,983,257",
