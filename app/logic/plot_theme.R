@@ -24,20 +24,23 @@ guide_legend_def  <- function() {
   )
 }
 
-theme_def  <- function(panel = TRUE, panel_grid_x = FALSE, panel_grid_y = FALSE) {
+theme_def  <- function(
+  panel = TRUE,
+  legend = TRUE,
+  axis = TRUE,
+  panel_grid_x = FALSE,
+  panel_grid_y = FALSE
+) {
   col_grid <- rgb(235, 235, 235, 80, maxColorValue = 255)
 
   theme(
     axis.title = element_blank(),
-    axis.text = element_text(
-        size = 14,
-        color = "white"
-    ),
-    axis.text.y = element_text(margin = margin(0, 5, 0, 0)),
-    axis.line.x = element_line(color = "white"),
+    axis.text = if(!axis) element_blank() else element_text(size = 14,color = "white"),
+    axis.text.y = if(!axis) element_blank() else element_text(margin = margin(0, 5, 0, 0)),
+    axis.line.x = if(!axis) element_blank() else element_line(color = "white"),
     axis.ticks = element_blank(),
     legend.background = element_blank(),
-    legend.position = "top",
+    legend.position = if(!legend) "none" else "top",
     legend.key = element_rect(fill = "NA"),
     legend.justification = "left",
     legend.margin = margin(0, 10, 10, 1),
