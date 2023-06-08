@@ -8,19 +8,14 @@ box::use(
     geom_text,
     guides,
     guide_legend,
-    margin,
     scale_fill_manual,
     scale_x_date,
-    scale_y_continuous,
-    unit
+    scale_y_continuous
   ],
-  plotly[ggplotly],
   dplyr[`%>%`, mutate, summarise, group_by, ungroup],
   elementalist[element_rect_round],
   scales[label_number_si, comma],
-  glue[glue],
-  lubridate[ymd],
-  shiny[div,NS, moduleServer, reactive, plotOutput, renderPlot]
+  shiny[div, NS, moduleServer, reactive, plotOutput, renderPlot]
 )
 
 box::use(

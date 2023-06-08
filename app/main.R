@@ -3,7 +3,6 @@ box::use(
   shiny[div, tags, moduleServer, NS, h1, dateRangeInput, fluidPage, icon],
   shinyWidgets[airDatepickerInput],
   lubridate[ymd],
-  bslib[bs_theme, font_google],
   imola[flexPanel, flexPage]
 )
 

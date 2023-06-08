@@ -7,14 +7,11 @@ box::use(
     geom_point,
     geom_text,
     guides,
-    margin,
     scale_x_date,
     scale_y_continuous
   ],
   dplyr[`%>%`, mutate, summarise, group_by, ungroup, lag, lead],
   scales[label_number_si, comma],
-  glue[glue],
-  lubridate[ymd],
   shiny[div, NS, moduleServer, reactive, plotOutput, renderPlot]
 )
 

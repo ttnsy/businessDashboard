@@ -1,22 +1,16 @@
 box::use(
     ggplot2[
         aes,
-        element_text,
-        element_blank,
         ggplot,
         geom_col,
         geom_text,
-        annotate,
         margin,
         scale_x_reverse,
-        scale_fill_manual,
-        theme
+        scale_fill_manual
     ],
-    dplyr[`%>%`, mutate, summarise, filter, group_by, ungroup, between, n],
+    dplyr[`%>%`, mutate, summarise, group_by, ungroup, n],
     scales[label_number_si, comma],
     stringr[str_to_title],
-    glue[glue],
-    lubridate[ymd],
     shiny[div, NS, moduleServer, reactive, plotOutput, renderPlot]
 )
 
