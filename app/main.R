@@ -4,7 +4,7 @@ box::use(
   shinyWidgets[airDatepickerInput],
   lubridate[ymd],
   bslib[bs_theme, font_google],
-  imola[flexPage]
+  imola[flexPanel, flexPage]
 )
 
 box::use(
@@ -19,7 +19,8 @@ box::use(
 #' @export
 ui <- function(id) {
   ns <- NS(id)
-  fluidPage(
+  flexPage(
+    direction = "column",
     div(
       class = "header",
       h1(
@@ -35,7 +36,8 @@ ui <- function(id) {
         maxDate = ymd("2020-12-31")
       )
     ),
-    div(
+    flexPanel(
+      template = "two-row",
       class = "main",
       div(
         class = "main-left",
