@@ -28,7 +28,7 @@ box::use(
 
 ui  <- function(id) {
   ns  <- NS(id)
-  plotOutput(ns("barchart"))
+  plotOutput(ns("barchart"), height = "300px")
 }
 
 server  <- function(id, data) {
@@ -42,10 +42,12 @@ server  <- function(id, data) {
             ungroup()
 
         line_height  <- mean(dat$revenue) * 0.06
+        line_gap  <- mean(dat$revenue) * 0.035
 
         dat %>%
           mutate(
             ymax = revenue + line_height,
+            coor_label = ymax + line_gap
           )
     })
 
@@ -64,10 +66,10 @@ server  <- function(id, data) {
           geom_linerange(aes(ymin = revenue, ymax = ymax), color = "gray") +
           geom_hline(aes(yintercept = 300000, color = `Monthly Goal`), linewidth = 1.5) +
           geom_text(
-            aes(label = comma(revenue, prefix = "$")),
-            vjust = -2,
-            size = 5,
-            color = blue
+            aes(y = coor_label, label = comma(revenue, prefix = "$")),
+            size = 4,
+            color = blue,
+            fontface = "bold",
           ) +
           guides(
             fill = guide_legend_def(),

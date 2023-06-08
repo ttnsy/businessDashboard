@@ -24,7 +24,7 @@ box::use(
 
 ui  <- function(id) {
   ns  <- NS(id)
-  plotOutput(ns("linechart"))
+  plotOutput(ns("linechart"), height = "300px")
 }
 
 server  <- function(id, data) {
@@ -83,7 +83,8 @@ server  <- function(id, data) {
         geom_text(
             aes(y = coor_label, label = comma(salary_avg, prefix = "$")),
             color = "red",
-            size = 5,
+            size = 4,
+            fontface = "bold"
         ) +
         guides(
             color = guide_legend_def()

@@ -26,7 +26,7 @@ box::use(
 
 ui  <- function(id) {
     ns  <- NS(id)
-    plotOutput(ns("stacked_bar"))
+    plotOutput(ns("stacked_bar"), height = "300px")
 }
 
 server  <- function(id, data) {
@@ -57,7 +57,7 @@ server  <- function(id, data) {
                 geom_col(color = "white") +
                 scale_fill_manual(values = c(blue, lightblue, lightestblue)) +
                 scale_x_reverse() +
-                geom_text(aes(x = coord_text, label = payment), size = 8) +
+                geom_text(aes(x = coord_text, label = payment), size = 6) +
                 theme_def(axis = FALSE, panel = FALSE, legend = FALSE)
         })
     })
