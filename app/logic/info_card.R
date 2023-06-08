@@ -2,7 +2,7 @@ box::use(
     shiny[div, h5, span]
 )
 
-infoCard <- function(header = NULL, text = NULL, numberIcon = NULL, number = NULL) {
+infoCard <- function(header = NULL, text = NULL, icon = NULL, number = NULL) { # nolint
   div(
     class = "info-card",
     h5(header),
@@ -12,7 +12,7 @@ infoCard <- function(header = NULL, text = NULL, numberIcon = NULL, number = NUL
     ),
     span(
       class = "number",
-      numberIcon,
+      icon,
       number
     )
   )

@@ -19,6 +19,7 @@ box::use(
 )
 
 box::use(
+  app/logic/utils[...],
   app/logic/plot_theme[guide_legend_def, theme_def]
 )
 
@@ -53,9 +54,8 @@ server  <- function(id, data) {
     output$barchart <- renderPlot({
         dat <- data_rev()
 
-        blue  <- "#0971ef"
-        `Monthly Goal` <- "#ff7345" # nolint: object_name_linter.
-        `Final Revenue` <- "#63b5f6" # nolint: object_name_linter.
+        `Monthly Goal` <- orange # nolint: object_name_linter.
+        `Final Revenue` <- lightblue # nolint: object_name_linter.
 
         y_break  <- 52000
         y_max  <- max(dat$revenue) + y_break

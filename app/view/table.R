@@ -5,6 +5,11 @@ box::use(
     htmltools[div],
 )
 
+box::use(
+  app/logic/utils[...]
+)
+
+
 ui  <- function(id) {
     ns  <- NS(id)
     reactableOutput(ns("table"))
@@ -27,7 +32,7 @@ server <- function(id, data) {
       label,
       width = "100%",
       height = "0.875rem",
-      fill = "#00bfc4",
+      fill = blue,
       background = NULL
     ) {
       bar <- div(
@@ -63,10 +68,10 @@ server <- function(id, data) {
               name = "Revenue",
               defaultSortOrder = "desc",
               cell = function(value) {
-                width <- paste0(value * 100 / max(dat$revenue),"%")
-                value <- paste0("$",format(value, big.mark = ","))
+                width <- paste0(value * 100 / max(dat$revenue), "%")
+                value <- paste0("$", format(value, big.mark = ","))
                 value <- format(value, width = 9, justify = "right")
-                bar_chart(value, width = width, fill = "#0971ef")
+                bar_chart(value, width = width)
               },
               align = "left",
               style = list(whiteSpace = "pre")
@@ -74,10 +79,10 @@ server <- function(id, data) {
             salary_avg = colDef(
               name = "Avg Salary",
               cell = function(value) {
-                width <- paste0(value * 100 / max(dat$salary_avg),"%")
-                value <- paste0("$",format(value, big.mark = ","))
+                width <- paste0(value * 100 / max(dat$salary_avg), "%")
+                value <- paste0("$", format(value, big.mark = ","))
                 value <- format(value, width = 9, justify = "right")
-                bar_chart(value, width = width, fill = "#e64a18")
+                bar_chart(value, width = width, fill = red)
               },
               align = "left",
               style = list(whiteSpace = "pre")
@@ -86,14 +91,13 @@ server <- function(id, data) {
           theme = reactableTheme(
             borderColor = "gray",
             color = "white",
-            backgroundColor = "#2c2e38",
+            backgroundColor = darkteal2,
             headerStyle = list(
-              background = "#273238",
-              borderColor = "#273238"
+              background = darkteal3,
+              borderColor = darkteal3
             )
           )
         )
     })
-
   })
 }

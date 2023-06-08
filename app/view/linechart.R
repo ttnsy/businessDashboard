@@ -16,6 +16,7 @@ box::use(
 )
 
 box::use(
+  app/logic/utils[...],
   app/logic/plot_theme[guide_legend_def, theme_def]
 )
 
@@ -66,7 +67,7 @@ server  <- function(id, data) {
     output$linechart <- renderPlot({
       dat <- data_sal()
 
-      `USD per Hour` <- "#ce4325" # nolint: object_name_linter.
+      `USD per Hour` <- orange2 # nolint: object_name_linter.
       mean_salary  <- mean(dat$salary_avg)
       max_salary  <- max(dat$salary_avg)
 

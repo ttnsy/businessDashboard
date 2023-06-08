@@ -14,6 +14,10 @@ box::use(
   grDevices[rgb]
 )
 
+box::use(
+  app/logic/utils[...]
+)
+
 guide_legend_def  <- function() {
   guide_legend(
     direction = "horizontal",
@@ -34,12 +38,12 @@ theme_def  <- function(
 
   theme(
     axis.title = element_blank(),
-    axis.text = if(!axis) element_blank() else element_text(size = 12, color = "white"),
-    axis.text.y = if(!axis) element_blank() else element_text(margin = margin(0, 5, 0, 0)),
-    axis.line.x = if(!axis) element_blank() else element_line(color = "white"),
+    axis.text = if (!axis) element_blank() else element_text(size = 12, color = "white"),
+    axis.text.y = if (!axis) element_blank() else element_text(margin = margin(0, 5, 0, 0)),
+    axis.line.x = if (!axis) element_blank() else element_line(color = "white"),
     axis.ticks = element_blank(),
     legend.background = element_blank(),
-    legend.position = if(!legend) "none" else "top",
+    legend.position = if (!legend) "none" else "top",
     legend.key = element_rect(fill = "NA"),
     legend.justification = "left",
     legend.margin = margin(0, 10, 5, 1),
@@ -48,16 +52,16 @@ theme_def  <- function(
         colour = "white"
     ),
     legend.spacing.x = unit(0.2, "lines"),
-    panel.grid.major.x = if(!panel_grid_x) element_blank() else element_line(color = col_grid),
-    panel.grid.minor.x = if(!panel_grid_x) element_blank() else element_line(color = col_grid),
-    panel.grid.major.y = if(!panel_grid_y) element_blank() else element_line(color = col_grid),
-    panel.grid.minor.y = if(!panel_grid_y) element_blank() else element_line(color = col_grid),
-    panel.background = if (!panel) element_blank() else element_rect(fill = "#3c4042"),
+    panel.grid.major.x = if (!panel_grid_x) element_blank() else element_line(color = col_grid),
+    panel.grid.minor.x = if (!panel_grid_x) element_blank() else element_line(color = col_grid),
+    panel.grid.major.y = if (!panel_grid_y) element_blank() else element_line(color = col_grid),
+    panel.grid.minor.y = if (!panel_grid_y) element_blank() else element_line(color = col_grid),
+    panel.background = if (!panel) element_blank() else element_rect(fill = darkteal),
     plot.background = element_rect(
-        fill = "#2c2e38",
+        fill = darkteal2,
         color = NA,
     ),
     plot.margin = unit(c(1, 2, 11, 1), "lines"),
-    panel.margin=unit(c(0,0,0,0), "cm")
+    panel.margin = unit(c(0, 0, 0, 0), "cm")
   )
 }

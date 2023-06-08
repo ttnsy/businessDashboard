@@ -15,6 +15,7 @@ box::use(
 )
 
 box::use(
+  app/logic/utils[...],
   app/logic/plot_theme[theme_def]
 )
 
@@ -46,13 +47,9 @@ server  <- function(id, data) {
         output$stacked_bar <- renderPlot({
             dat <- data_pay()
 
-            lightblue <- "#63b5f6"
-            lightestblue <- "#97c5fa"
-            blue  <- "#0971ef"
-
             ggplot(dat, aes(y = cat, x = perc, fill = payment)) +
                 geom_col(color = "white") +
-                scale_fill_manual(values = c(blue, lightblue, lightestblue)) +
+                scale_fill_manual(values = c(blue, lightblue, lightblue2)) +
                 scale_x_reverse() +
                 geom_text(aes(x = coord_text, label = payment), size = 6) +
                 theme_def(axis = FALSE, panel = FALSE, legend = FALSE)
