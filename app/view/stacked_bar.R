@@ -17,7 +17,7 @@ box::use(
     stringr[str_to_title],
     glue[glue],
     lubridate[ymd],
-    shiny[NS, moduleServer, reactive, plotOutput, renderPlot]
+    shiny[div, NS, moduleServer, reactive, plotOutput, renderPlot]
 )
 
 box::use(
@@ -26,7 +26,10 @@ box::use(
 
 ui  <- function(id) {
     ns  <- NS(id)
-    plotOutput(ns("stacked_bar"), height = "300px")
+    div(
+      class = "chart-container",
+      plotOutput(ns("stacked_bar"))
+    )
 }
 
 server  <- function(id, data) {

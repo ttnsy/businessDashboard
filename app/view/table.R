@@ -87,7 +87,11 @@ server <- function(id, data) {
           theme = reactableTheme(
             borderColor = "gray",
             color = "white",
-            backgroundColor = "#2c2e38"
+            backgroundColor = "#2c2e38",
+            headerStyle = list(
+              background = "#273238",
+              borderColor = "#273238"
+            )
           )
         )
     })

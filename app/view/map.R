@@ -9,12 +9,15 @@ box::use(
         e_visual_map,
         renderEcharts4r
     ],
-    shiny[moduleServer, NS, plotOutput, reactive, renderPlot]
+    shiny[div, moduleServer, NS, plotOutput, reactive, renderPlot]
 )
 
 ui  <- function(id) {
     ns  <- NS(id)
-    echarts4rOutput(ns("map"), height = "100%")
+    div(
+      class="map-container",
+      echarts4rOutput(ns("map"))
+    )
 }
 
 server  <- function(id, data) {

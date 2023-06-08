@@ -14,12 +14,13 @@ box::use(
     scale_y_continuous,
     unit
   ],
+  plotly[ggplotly],
   dplyr[`%>%`, mutate, summarise, group_by, ungroup],
   elementalist[element_rect_round],
   scales[label_number_si, comma],
   glue[glue],
   lubridate[ymd],
-  shiny[NS, moduleServer, reactive, plotOutput, renderPlot]
+  shiny[div,NS, moduleServer, reactive, plotOutput, renderPlot]
 )
 
 box::use(
@@ -28,7 +29,10 @@ box::use(
 
 ui  <- function(id) {
   ns  <- NS(id)
-  plotOutput(ns("barchart"), height = "300px")
+  div(
+    class = "chart-container",
+    plotOutput(ns("barchart"))
+  )
 }
 
 server  <- function(id, data) {

@@ -34,7 +34,7 @@ theme_def  <- function(
 
   theme(
     axis.title = element_blank(),
-    axis.text = if(!axis) element_blank() else element_text(size = 14,color = "white"),
+    axis.text = if(!axis) element_blank() else element_text(size = 12, color = "white"),
     axis.text.y = if(!axis) element_blank() else element_text(margin = margin(0, 5, 0, 0)),
     axis.line.x = if(!axis) element_blank() else element_line(color = "white"),
     axis.ticks = element_blank(),
@@ -42,9 +42,9 @@ theme_def  <- function(
     legend.position = if(!legend) "none" else "top",
     legend.key = element_rect(fill = "NA"),
     legend.justification = "left",
-    legend.margin = margin(0, 10, 10, 1),
+    legend.margin = margin(0, 10, 5, 1),
     legend.title = element_text(
-        size = 14,
+        size = 12,
         colour = "white"
     ),
     legend.spacing.x = unit(0.2, "lines"),
@@ -57,6 +57,7 @@ theme_def  <- function(
         fill = "#2c2e38",
         color = NA,
     ),
-    plot.margin = unit(c(1, 2, 2, 1), "lines")
+    plot.margin = unit(c(1, 2, 11, 1), "lines"),
+    panel.margin=unit(c(0,0,0,0), "cm")
   )
 }

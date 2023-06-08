@@ -15,7 +15,7 @@ box::use(
   scales[label_number_si, comma],
   glue[glue],
   lubridate[ymd],
-  shiny[NS, moduleServer, reactive, plotOutput, renderPlot]
+  shiny[div, NS, moduleServer, reactive, plotOutput, renderPlot]
 )
 
 box::use(
@@ -24,7 +24,10 @@ box::use(
 
 ui  <- function(id) {
   ns  <- NS(id)
-  plotOutput(ns("linechart"), height = "300px")
+  div(
+    class = "chart-container",
+    plotOutput(ns("linechart"))
+  )
 }
 
 server  <- function(id, data) {

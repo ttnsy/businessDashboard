@@ -19,8 +19,7 @@ box::use(
 #' @export
 ui <- function(id) {
   ns <- NS(id)
-  flexPage(
-    template = "one-three-alternate",
+  fluidPage(
     div(
       class = "header",
       h1(
@@ -37,16 +36,19 @@ ui <- function(id) {
       )
     ),
     div(
-      class = "main-left",
-      summary$ui(ns("info_card")),
-      barchart$ui(ns("barchart")),
-      linechart$ui(ns("linechart")),
-      stacked_bar$ui(ns("stacked_bar"))
-    ),
-    div(
-      class = "main-right",
-      map$ui(ns("map")),
-      table$ui(ns("table"))
+      class = "main",
+      div(
+        class = "main-left",
+        summary$ui(ns("info_card")),
+        barchart$ui(ns("barchart")),
+        linechart$ui(ns("linechart")),
+        stacked_bar$ui(ns("stacked_bar"))
+      ),
+      div(
+        class = "main-right",
+        map$ui(ns("map")),
+        table$ui(ns("table"))
+      )
     )
   )
 }
