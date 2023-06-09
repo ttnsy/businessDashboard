@@ -13,7 +13,6 @@ box::use(
     scale_y_continuous
   ],
   dplyr[`%>%`, mutate, summarise, group_by, ungroup],
-  elementalist[element_rect_round],
   scales[label_number_si, comma],
   shiny[div, NS, moduleServer, reactive, plotOutput, renderPlot]
 )
