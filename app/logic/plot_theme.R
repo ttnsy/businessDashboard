@@ -62,6 +62,6 @@ theme_def  <- function(
         color = NA,
     ),
     plot.margin = unit(c(1, 2, 11, 1), "lines"),
-    panel.margin = unit(c(0, 0, 0, 0), "cm")
+    panel.spacing = unit(c(0, 0, 0, 0), "cm")
   )
 }
