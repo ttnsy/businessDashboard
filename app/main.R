@@ -3,7 +3,7 @@ box::use(
   shiny[div, tags, moduleServer, NS, h1, dateRangeInput, fluidPage, icon],
   shinyWidgets[airDatepickerInput],
   lubridate[ymd],
-  imola[flexPanel, flexPage]
+  imola[flexPanel, gridPage]
 )
 
 box::use(
@@ -18,10 +18,16 @@ box::use(
 #' @export
 ui <- function(id) {
   ns <- NS(id)
-  flexPage(
-    direction = "column",
-    div(
+  gridPage(
+    title = "Business Dashboard",
+    areas = list(
+      c("header", "header"),
+      c("main-left", "main-right")
+    ),
+    header = flexPanel(
       class = "header",
+      flex = c(1, "initial"),
+      `justify-content` = "space-between",
       h1(
         class = "title",
         "Business Summary"
@@ -35,21 +41,20 @@ ui <- function(id) {
         maxDate = ymd("2020-12-31")
       )
     ),
-    flexPanel(
-      template = "two-row",
-      class = "main",
-      div(
-        class = "main-left",
-        summary$ui(ns("info_card")),
-        barchart$ui(ns("barchart")),
-        linechart$ui(ns("linechart")),
-        stacked_bar$ui(ns("stacked_bar"))
-      ),
-      div(
-        class = "main-right",
-        map$ui(ns("map")),
-        table$ui(ns("table"))
-      )
+    `main-left` = flexPanel(
+      direction = "column",
+      flex = "initial",
+      gap = "1em",
+      summary$ui(ns("info_card")),
+      barchart$ui(ns("barchart")),
+      linechart$ui(ns("linechart")),
+      stacked_bar$ui(ns("stacked_bar"))
+    ),
+    `main-right` = flexPanel(
+      direction = "column",
+      gap = "1em",
+      map$ui(ns("map")),
+      table$ui(ns("table"))
     )
   )
 }
